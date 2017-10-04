@@ -22,13 +22,13 @@ int main() {
     // Get input from user
     string Guess = "";
     cout << "Enter your guess: ";
-    cin >> Guess;
+    getline(cin, Guess);
     cout << endl;
 
     
     
     // Repeat inpot back to user
-    cout << "You guess was: " << Guess;
+    cout << "You guess was: " << Guess << endl;
     return 0;
 }
 
