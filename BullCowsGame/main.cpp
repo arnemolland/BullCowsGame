@@ -7,39 +7,15 @@
 
 #include <iostream>
 #include <string>
+#include "main.h"
 
 using namespace std;
 
-void PrintIntro() {
-    // Initialize a constexpr value
-    constexpr int WORD_LENGTH = 55;
-    //Introduce the game
-    cout << "Welcome to Bulls and Cows\n";
-    cout << "Can you guess the " << WORD_LENGTH;
-    cout << " letter isogram?\n";
-    return;
-}
-
-string GetGuessAndPrintBack() {
-    
-    // Get input from user
-    string Guess = "";
-    cout << "Enter your guess: ";
-    getline(cin, Guess);
-    cout << endl;
-
-    // Repeat input back to user
-    cout << "You guess was: " << Guess << endl;
-    return Guess;
-}
 
 int main(){
-    constexpr int TURNS = 5;
+    
     PrintIntro();
-    for (int i=1; i<=TURNS; i++) {
-    GetGuessAndPrintBack();
-        cout << "___________" << endl << endl;
-    }
+    PlayGame();
     
     return 0;
 }
