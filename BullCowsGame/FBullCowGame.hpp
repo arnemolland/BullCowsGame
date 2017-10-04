@@ -17,6 +17,10 @@ class FBullCowGame {
 public:
    void Reset(); //TODO Make a richer return value
     int GetMaxTries();
+    int GetCurrentTry;
+    bool IsGameWon();
+    bool CheckGuessValidity(string); //TODO Make a richer return value
+    
     
 private:
     int MyCurrentTry;
