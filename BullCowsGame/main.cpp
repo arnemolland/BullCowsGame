@@ -23,11 +23,12 @@ int main() {
     string Guess = "";
     cout << "Enter your guess: ";
     cin >> Guess;
-    
+    cout << endl;
 
     
     
     // Repeat inpot back to user
+    cout << "You guess was: " << Guess;
     return 0;
 }
 
