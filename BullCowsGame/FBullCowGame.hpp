@@ -16,6 +16,12 @@
 using FString = std::string;
 using int32 = int;
 
+struct FBullCowCount
+{
+    int32 Bulls = 0;
+    int32 Cows = 0;
+};
+
 class FBullCowGame {
 //First priority is the public interface
 public:
@@ -23,16 +29,20 @@ public:
     
     int32 GetMaxTries() const;
     int32 GetCurrentTry() const;
+    int32 GetHiddenWordLength() const;
     bool IsGameWon() const;
+    bool CheckGuessValidity(FString) const;
     
     void Reset(); //TODO Make a richer return value
-    bool CheckGuessValidity(FString); //TODO Make a richer return value
-    //Method for counting bulls and cows, incrementing or increasing try number
+    
+    
+    FBullCowCount SubmitGuess(FString);
     
     
 private:
     int32 MyCurrentTry = 1;
     int32 MyMaxTries = 5;
+    FString MyHiddenWord;
 };
 
 #endif /* FBullCowGame_hpp */
