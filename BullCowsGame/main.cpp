@@ -46,32 +46,31 @@ std::string GetGuess()
     
     // Get input from user
     std::string Guess = "";
-    std::cout << "Try" << CurrentTry << "Enter your guess: ";
+    std::cout << "Try " << CurrentTry << ". Enter your guess: ";
     std::getline(std::cin, Guess);
     return Guess;
 }
 
 void PlayGame()
 {
+    BCGame.Reset();
     int MaxTries = BCGame.GetMaxTries();
-    std::cout << MaxTries << std::endl;
     
-    for (int i=1; i<=MaxTries; i++)
-    {
-        GetGuess();
+    //TODO change til while-loop
+    for (int i=1; i<=MaxTries; i++){
+        std::string Guess = GetGuess(); //TODO Validity check
+        std::cout << std::endl;
         
+        //TODO summarize game
+        //Print # of bulls and cows
         
-        std::cout << "___________" << std::endl << std::endl;
+        std::cout << "You guess was: " << Guess << std::endl;
     }
+    
+
 }
 
-void PrintBack()
-{
-    std::cout << std::endl;
-    std::string Guess = GetGuess();
-    // Repeat input back to user
-    std::cout << "You guess was: " << Guess << std::endl;
-}
+
 
 bool AskToReplay()
 {

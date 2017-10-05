@@ -16,11 +16,15 @@
 class FBullCowGame {
 //First priority is the public interface
 public:
-   void Reset(); //TODO Make a richer return value
-    int GetMaxTries();
-    int GetCurrentTry();
-    bool IsGameWon();
+    FBullCowGame(); //Constructor
+    
+    int GetMaxTries() const;
+    int GetCurrentTry() const;
+    bool IsGameWon() const;
+    
+    void Reset(); //TODO Make a richer return value
     bool CheckGuessValidity(std::string); //TODO Make a richer return value
+    //Method for counting bulls and cows, incrementing or increasing try number
     
     
 private:
