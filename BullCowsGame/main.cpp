@@ -10,7 +10,27 @@
 #include "FBullCowGame.hpp"
 
 
-void PrintIntro() {
+void PrintIntro();
+std::string GetGuess();
+void PlayGame();
+void PrintBack();
+bool AskToReplay();
+
+FBullCowGame BCGame; // Instantiate a new game
+
+int main()
+{
+    do
+    {
+    PrintIntro();
+    PlayGame();
+    }
+    while (AskToReplay());
+    return 0;
+}
+
+void PrintIntro()
+{
     // Initialize a constexpr value
     constexpr int WORD_LENGTH = 55;
     //Introduce the game
@@ -20,20 +40,24 @@ void PrintIntro() {
     return;
 }
 
-std::string GetGuess() {
+std::string GetGuess()
+{
+    int CurrentTry = BCGame.GetCurrentTry();
     
     // Get input from user
     std::string Guess = "";
-    std::cout << "Enter your guess: ";
+    std::cout << "Try" << CurrentTry << "Enter your guess: ";
     std::getline(std::cin, Guess);
     return Guess;
 }
 
-static void PlayGame() {
-    FBullCowGame BCGame; // Instantiate a new game
+void PlayGame()
+{
+    int MaxTries = BCGame.GetMaxTries();
+    std::cout << MaxTries << std::endl;
     
-    constexpr int TURNS = 5;
-    for (int i=1; i<=TURNS; i++) {
+    for (int i=1; i<=MaxTries; i++)
+    {
         GetGuess();
         
         
@@ -41,31 +65,21 @@ static void PlayGame() {
     }
 }
 
-void PrintBack() {
+void PrintBack()
+{
     std::cout << std::endl;
     std::string Guess = GetGuess();
     // Repeat input back to user
     std::cout << "You guess was: " << Guess << std::endl;
 }
 
-bool AskToReplay(){
+bool AskToReplay()
+{
     std::cout << "Do you want to play again? (y/n)";
     std::string Response = "";
     getline(std::cin, Response);
     std::cout << std::endl;
     return (Response[0] == 'y')||(Response[0] == 'Y');
 }
-
-
-int main(){
-    
-    do {
-    PrintIntro();
-    PlayGame();
-    }
-    while (AskToReplay());
-    return 0;
-}
-
 
 
