@@ -30,6 +30,8 @@ std::string GetGuess() {
 }
 
 static void PlayGame() {
+    FBullCowGame BCGame; // Instantiate a new game
+    
     constexpr int TURNS = 5;
     for (int i=1; i<=TURNS; i++) {
         GetGuess();
