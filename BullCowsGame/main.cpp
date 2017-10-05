@@ -5,13 +5,19 @@
 //  Created by Arne Molland on 03/10/2017.
 //  Copyright © 2017 Arne Molland. All rights reserved.
 
+/* This is the console executable, which makes use of the BullCow class
+   This acts as the view in a MVC pattern, and is responsible for all
+   user interaction. For game logic, see the FBullCowGame class. */
+
 #include <iostream>
 #include <string>
 #include "FBullCowGame.hpp"
 
+using FText = std::string;
+using int32 = int;
 
 void PrintIntro();
-std::string GetGuess();
+FText GetGuess();
 void PlayGame();
 void PrintBack();
 bool AskToReplay();
@@ -32,7 +38,7 @@ int main()
 void PrintIntro()
 {
     // Initialize a constexpr value
-    constexpr int WORD_LENGTH = 55;
+    constexpr int32 WORD_LENGTH = 55;
     //Introduce the game
     std::cout << "Welcome to Bulls and Cows\n";
     std::cout << "Can you guess the " << WORD_LENGTH;
@@ -40,12 +46,12 @@ void PrintIntro()
     return;
 }
 
-std::string GetGuess()
+FText GetGuess()
 {
     int CurrentTry = BCGame.GetCurrentTry();
     
     // Get input from user
-    std::string Guess = "";
+    FText Guess = "";
     std::cout << "Try " << CurrentTry << ". Enter your guess: ";
     std::getline(std::cin, Guess);
     return Guess;
@@ -54,11 +60,11 @@ std::string GetGuess()
 void PlayGame()
 {
     BCGame.Reset();
-    int MaxTries = BCGame.GetMaxTries();
+    int32 MaxTries = BCGame.GetMaxTries();
     
     //TODO change til while-loop
-    for (int i=1; i<=MaxTries; i++){
-        std::string Guess = GetGuess(); //TODO Validity check
+    for (int32 i=1; i<=MaxTries; i++){
+        FText Guess = GetGuess(); //TODO Validity check
         std::cout << std::endl;
         
         //TODO summarize game
@@ -75,7 +81,7 @@ void PlayGame()
 bool AskToReplay()
 {
     std::cout << "Do you want to play again? (y/n)";
-    std::string Response = "";
+    FText Response = "";
     getline(std::cin, Response);
     std::cout << std::endl;
     return (Response[0] == 'y')||(Response[0] == 'Y');
