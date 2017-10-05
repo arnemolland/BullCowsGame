@@ -7,25 +7,25 @@
 
 #include <iostream>
 #include <string>
+#include "FBullCowGame.hpp"
 
-using namespace std;
 
 void PrintIntro() {
     // Initialize a constexpr value
     constexpr int WORD_LENGTH = 55;
     //Introduce the game
-    cout << "Welcome to Bulls and Cows\n";
-    cout << "Can you guess the " << WORD_LENGTH;
-    cout << " letter isogram?\n";
+    std::cout << "Welcome to Bulls and Cows\n";
+    std::cout << "Can you guess the " << WORD_LENGTH;
+    std::cout << " letter isogram?\n";
     return;
 }
 
-string GetGuess() {
+std::string GetGuess() {
     
     // Get input from user
-    string Guess = "";
-    cout << "Enter your guess: ";
-    getline(cin, Guess);
+    std::string Guess = "";
+    std::cout << "Enter your guess: ";
+    std::getline(std::cin, Guess);
     return Guess;
 }
 
@@ -35,23 +35,23 @@ static void PlayGame() {
         GetGuess();
         
         
-        cout << "___________" << endl << endl;
+        std::cout << "___________" << std::endl << std::endl;
     }
 }
 
 void PrintBack() {
-    cout << endl;
-    string Guess = GetGuess();
+    std::cout << std::endl;
+    std::string Guess = GetGuess();
     // Repeat input back to user
-    cout << "You guess was: " << Guess << endl;
+    std::cout << "You guess was: " << Guess << std::endl;
 }
 
 bool AskToReplay(){
-    cout << "Do you want to play again? (y/n)";
-    string Response = "";
-    getline(cin, Response);
-    cout << endl;
-    return (Response[0] == 'y') || (Response[0] == 'Y');
+    std::cout << "Do you want to play again? (y/n)";
+    std::string Response = "";
+    getline(std::cin, Response);
+    std::cout << std::endl;
+    return (Response[0] == 'y')||(Response[0] == 'Y');
 }
 
 
