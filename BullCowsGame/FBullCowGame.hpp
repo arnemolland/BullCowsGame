@@ -22,10 +22,16 @@ struct FBullCowCount
     int32 Cows = 0;
 };
 
-enum EWordStatus
+enum class EWordStatus
 {
     OK,
     Not_Isogram
+};
+
+enum class EResetStatus
+{
+    No_Hidden_Word,
+    OK
 };
 
 class FBullCowGame {
