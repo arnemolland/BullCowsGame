@@ -36,10 +36,28 @@ bool FBullCowGame::IsGameWon() const
     return true;
 }
 
-EWordStatus FBullCowGame::CheckGuessValidity(std::string) const
+EGuessStatus FBullCowGame::CheckGuessValidity(std::string) const
 {
+    if (false) {
+        return EGuessStatus::Not_Isogram;
+    }
     
-    return EWordStatus::OK; //TODO make actual error
+    else if (false) {
+        return EGuessStatus::Not_Lowercase;
+    }
+    
+    else if (false) {
+        return EGuessStatus::Wrong_Length;
+    }
+    
+    else {
+        return EGuessStatus::OK;
+    }
+    //If guess is not isogram, return error
+    //If not all lowercase, return error
+    //If guess length is wrong, return error
+    //Else, return OK
+    return EGuessStatus::OK; //TODO make actual error
 }
 
 // Recieves *valid* guess, increments turn, returns count

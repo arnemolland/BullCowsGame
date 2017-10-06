@@ -61,7 +61,7 @@ void PlayGame()
     BCGame.Reset();
     int32 MaxTries = BCGame.GetMaxTries();
     
-    //TODO change til while-loop
+    //TODO change to while-loop
     for (int32 i=1; i<=MaxTries; i++){
         FText Guess = GetGuess(); //TODO Validity check
         std::cout << std::endl;
