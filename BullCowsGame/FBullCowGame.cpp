@@ -36,9 +36,10 @@ bool FBullCowGame::IsGameWon() const
     return true;
 }
 
-bool FBullCowGame::CheckGuessValidity(std::string) const
+EWordStatus FBullCowGame::CheckGuessValidity(std::string) const
 {
-    return true;
+    
+    return EWordStatus::OK; //TODO make actual error
 }
 
 // Recieves *valid* guess, increments turn, returns count
