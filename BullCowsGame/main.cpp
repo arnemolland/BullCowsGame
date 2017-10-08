@@ -45,7 +45,7 @@ void PrintIntro()
     return;
 }
 
-FText GetGuess()
+FText GetGuess() //TODO change to GetValidGuess
 {
     int CurrentTry = BCGame.GetCurrentTry();
     
@@ -66,10 +66,12 @@ void PlayGame()
         FText Guess = GetGuess(); //TODO Validity check
         std::cout << std::endl;
         
+        EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
+        
        FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
         // Print # of bulls and cows
         std::cout << "Bulls = " << BullCowCount.Bulls;
-        std::cout << " Cows = " << BullCowCount.Cows;
+        std::cout << " Cows = " << BullCowCount.Cows << std::endl;
         std::cout << std::endl;
         
         

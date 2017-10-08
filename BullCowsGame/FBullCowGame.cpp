@@ -36,9 +36,11 @@ bool FBullCowGame::IsGameWon() const
     return true;
 }
 
-EGuessStatus FBullCowGame::CheckGuessValidity(std::string) const
+EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 {
+    
     if (false) {
+        
         return EGuessStatus::Not_Isogram;
     }
     
@@ -46,7 +48,7 @@ EGuessStatus FBullCowGame::CheckGuessValidity(std::string) const
         return EGuessStatus::Not_Lowercase;
     }
     
-    else if (false) {
+    else if (Guess.length() != GetHiddenWordLength()) {
         return EGuessStatus::Wrong_Length;
     }
     
