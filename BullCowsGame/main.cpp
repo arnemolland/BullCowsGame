@@ -17,7 +17,7 @@ using FText = std::string;
 using int32 = int;
 
 void PrintIntro();
-FText GetGuess();
+FText GetValidGuess();
 void PlayGame();
 void PrintBack();
 bool AskToReplay();
@@ -45,16 +45,40 @@ void PrintIntro()
     return;
 }
 
-FText GetGuess() //TODO change to GetValidGuess
+
+FText GetValidGuess() //TODO change to GetValidGuess
 {
-    int CurrentTry = BCGame.GetCurrentTry();
-    
-    // Get input from user
+    EGuessStatus Status = EGuessStatus::Invalid_Status;
     FText Guess = "";
+    do {
+     // Get input from user
+    int32 CurrentTry = BCGame.GetCurrentTry();
     std::cout << "Try " << CurrentTry << ". Enter your guess: ";
     std::getline(std::cin, Guess);
+    
+    Status = BCGame.CheckGuessValidity(Guess);
+    switch (Status) {
+        case EGuessStatus::Wrong_Length:
+            std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word.\n";
+            break;
+            
+        case EGuessStatus::Not_Isogram:
+            std::cout << "Please enter an isogram.\n";
+            break;
+            
+        case EGuessStatus::Not_Lowercase:
+            std::cout << "Please enter in all lowercase.\n";
+            break;
+            
+        default:
+        break;        }
+        std::cout << std::endl;
+        
+    } while (Status != EGuessStatus::OK); //Loop until valid input
+    
     return Guess;
 }
+
 
 void PlayGame()
 {
@@ -63,16 +87,14 @@ void PlayGame()
     
     //TODO change to while-loop
     for (int32 i=1; i<=MaxTries; i++){
-        FText Guess = GetGuess(); //TODO Validity check
+        FText Guess = GetValidGuess(); //TODO Validity check
         std::cout << std::endl;
         
-        EGuessStatus Status = BCGame.CheckGuessValidity(Guess);
-        
+
        FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
         // Print # of bulls and cows
         std::cout << "Bulls = " << BullCowCount.Bulls;
-        std::cout << " Cows = " << BullCowCount.Cows << std::endl;
-        std::cout << std::endl;
+        std::cout << " Cows = " << BullCowCount.Cows << "\n\n";
         
         
         //TODO summarize game
